@@ -28,7 +28,4 @@ jobs:
         with:
           args: zip -qq -r ./bundle.zip ./
 
-      - name: default deploy
-        run: |
-          aws lambda update-function-code --function-name=function-2 --zip-file=fileb://bundle.zip
           

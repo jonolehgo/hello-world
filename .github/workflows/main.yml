@@ -25,8 +25,8 @@ jobs:
           CI: true
       - name: zip
         run: montudor/action-zip@v0.1.0
-        with:
           args: zip -qq -r ./bundle.zip ./
+          
       - name: default deploy
         run: |
           aws lambda update-function-code --function-name=function-2 --zip-file=fileb://bundle.zip

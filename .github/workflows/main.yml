@@ -28,6 +28,7 @@ jobs:
         run: |
           zip -j bundle.zip ./my-function/*
           
+          
       - name: Configure AWS Credentials
       - uses: aws-actions/configure-aws-credentials@v1
         with:

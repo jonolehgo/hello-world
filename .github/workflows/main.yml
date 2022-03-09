@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   deploy_source:
     name: build and deploy lambda
@@ -20,9 +24,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
      
       # Configure AWS
-      permissions:
-        id-token: write
-        contents: read
       - name: Configure AWS Credentials
             uses: aws-actions/configure-aws-credentials@v1
             with:

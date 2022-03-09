@@ -29,3 +29,7 @@ jobs:
       - name: zip
         run: |
           zip -j bundle.zip ./my-function/*
+      
+      - name: deploy to AWS
+      - run: |
+          aws lambda update-function-code --function-name=function-2 --zip-file=bundle.zip

@@ -1,28 +1,18 @@
-name: Deploy Python Lambda
-
-on:
-  push:
-    branches:
-      - main
-
+name: deploy to lambda
+on: [push]
 jobs:
-  deploy:
-    name: deploy
-    runs-on: ubuntu-latest
-    env:
-      NODE_VERSION: 14.x # used for installing the serverless-python-requirements dependency from NPM
+  deploy_source:
+    name: build and deploy lambda
     strategy:
       matrix:
-        python-version:
-          - 3.9 # with a build matrix, you can specify a list of python versions to deploy with
+        node-version: [12.x]
+    runs-on: ubuntu-latest
     steps:
-      # --------- use Python to install Python dependencies and run linter, tests, etc. ---------
       - uses: actions/checkout@v1
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          python-version: ${{ matrix.python-version }}
-
+          node-version: ${{ matrix.node-version }}
       - name: npm install and build
         run: |
           npm ci
@@ -38,6 +28,6 @@ jobs:
         with:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: ap-southeast-2
+          aws_region: eu-west-1
           function_name: my-function
           zip_file: bundle.zip

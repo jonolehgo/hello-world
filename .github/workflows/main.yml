@@ -23,5 +23,6 @@ jobs:
           npm run build --if-present
         env:
           CI: true
-      
-   
+      - name: zip
+        run: |
+          zip -j bundle.zip ./my-function/*

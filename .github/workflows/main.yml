@@ -5,11 +5,11 @@ jobs:
     name: build and deploy lambda
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [3.9]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Use Python 3.9 ${{ matrix.node-version }}
+      - name: Use Python ${{ matrix.node-version }}
         uses: actions/setup-node@v1        with:
           node-version: ${{ matrix.node-version }}
       - name: npm install and build

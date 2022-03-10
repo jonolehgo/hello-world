@@ -32,4 +32,4 @@ jobs:
       
       - name: deploy to aws
       - run: |
-          aws lambda update-function-code --function-name=function-2 --zip-file=fileb://my-function/bundle.zip
+          aws lambda update-function-code --function-name=function-2 --zip-file=fileb://bundle.zip

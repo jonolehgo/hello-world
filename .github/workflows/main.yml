@@ -27,7 +27,7 @@ jobs:
 
       - name: zip
         run: |
-          zip -j bundle.zip ./my-function/*
+          zip -j bundle.zip ./function-2/*
 
       # AWS
       - name: Configure AWS Credentials
